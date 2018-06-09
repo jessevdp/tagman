@@ -15,6 +15,7 @@ public class MainFrame extends JFrame {
 	public MainFrame (Game game, TimeController timeController) throws HeadlessException {
 		this.contentPane = new ContentPane(game, timeController);
 		
+		setContentPane(contentPane);
 		setTitle("TagMan by Jesse van der Pluijm");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
