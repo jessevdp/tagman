@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import tagman.controller.MainController;
 import tagman.controller.TimeController;
 
 @SuppressWarnings("serial")
@@ -12,8 +13,8 @@ public class TimeView extends JPanel implements Observer {
 	
 	TimeController timeController;
 
-	public TimeView(TimeController timeController) {
-		this.timeController = timeController;
+	public TimeView(MainController mainController) {
+		this.timeController = mainController.getTimeController();
 		timeController.addObserver(this);
 	}
 	

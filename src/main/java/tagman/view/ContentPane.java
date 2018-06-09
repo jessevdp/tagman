@@ -4,8 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import tagman.controller.TimeController;
-import tagman.model.Game;
+import tagman.controller.MainController;
 
 @SuppressWarnings("serial")
 public class ContentPane extends JPanel {
@@ -14,10 +13,10 @@ public class ContentPane extends JPanel {
 	GameView gameView;
 	TimeView timeView;
 
-	public ContentPane(Game game, TimeController timeController) {
-		this.playView = new PlayView(game);
-		this.gameView = new GameView(game);
-		this.timeView = new TimeView(timeController);
+	public ContentPane(MainController mainController) {
+		this.playView = new PlayView(mainController);
+		this.gameView = new GameView(mainController);
+		this.timeView = new TimeView(mainController);
 		
 		JPanel infoPanel = new JPanel();
 		infoPanel.setLayout(new BorderLayout());

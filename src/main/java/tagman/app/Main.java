@@ -1,13 +1,11 @@
 package tagman.app;
 
-import tagman.controller.TimeController;
-import tagman.model.Game;
-import tagman.view.MainFrame;
+import tagman.controller.MainController;
 
 public class Main {
 
 	public static void main(String[] args) {
-		new MainFrame(new Game(), new TimeController());
+		new MainController();
 	}
 
 }
