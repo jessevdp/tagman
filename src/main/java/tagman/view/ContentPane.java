@@ -1,5 +1,7 @@
 package tagman.view;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 import tagman.controller.TimeController;
@@ -16,6 +18,14 @@ public class ContentPane extends JPanel {
 		this.playView = new PlayView(game);
 		this.gameView = new GameView(game);
 		this.timeView = new TimeView(timeController);
+		
+		JPanel infoPanel = new JPanel();
+		infoPanel.setLayout(new BorderLayout());
+		infoPanel.add(gameView, BorderLayout.NORTH);
+		infoPanel.add(timeView, BorderLayout.SOUTH);
+		
+		this.add(infoPanel, BorderLayout.WEST);
+		this.add(playView, BorderLayout.CENTER);
 	}
 
 }
