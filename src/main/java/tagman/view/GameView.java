@@ -5,11 +5,16 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import tagman.model.Game;
+
 @SuppressWarnings("serial")
 public class GameView extends JPanel implements Observer {
-
-	public GameView() {
-
+	
+	Game game;
+	
+	public GameView(Game game) {
+		this.game = game;
+		game.addObserver(this);
 	}
 
 	@Override
