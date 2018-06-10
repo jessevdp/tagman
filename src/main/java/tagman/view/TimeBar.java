@@ -9,6 +9,10 @@ import tagman.controller.TimeController;
 
 @SuppressWarnings("serial")
 public class TimeBar extends JPanel {
+	
+	private static Color DEFAULT_COLOR = Color.CYAN;
+	private static Color HALFWAY_DONE_COLOR = Color.ORANGE;
+	private static Color ALMOST_DONE_COLOR = Color.RED;
 
 	TimeController timeController;
 	
@@ -43,15 +47,15 @@ public class TimeBar extends JPanel {
 	}
 	
 	private Color calculateColor() {
-		Color color = Color.CYAN;
+		Color color = DEFAULT_COLOR;
 		
 		int amountOfSteps = calculateAmountOfSteps();
 		int amountOfStepsLeft = calculateAmountOfStepsLeft();
 
 		if (amountOfStepsLeft <= (amountOfSteps / 4)) {
-			color = Color.RED;
+			color = ALMOST_DONE_COLOR;
 		} else if (amountOfStepsLeft <= (amountOfSteps / 2)) {
-			color = Color.ORANGE;
+			color = HALFWAY_DONE_COLOR;
 		}
 		
 		return color;
