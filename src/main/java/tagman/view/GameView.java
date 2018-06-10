@@ -3,6 +3,7 @@ package tagman.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.Observable;
 import java.util.Observer;
@@ -88,6 +89,13 @@ public class GameView extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		repaint();
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		scoreLabel.setText(0); // TODO implement actual value
+		levelLabel.setText(0); // TODO implement actual value
 	}
 
 }
