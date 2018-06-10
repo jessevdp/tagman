@@ -26,6 +26,7 @@ public class GameView extends JPanel implements Observer {
 	
 	Game game;
 	Label scoreLabel;
+	Label levelLabel;
 	
 	public GameView(MainController mainController) {
 		this.game = mainController.getGame();
@@ -37,10 +38,13 @@ public class GameView extends JPanel implements Observer {
 		setLayout(new BorderLayout(0, PADDING_BETWEEN));
 		
 		this.scoreLabel = new Label("00", true);
+		this.levelLabel = new Label("00", true);
 		
 		JPanel scoreView = createScoreView();
+		JPanel levelView = createLevelView();
 		
 		this.add(scoreView, BorderLayout.NORTH);
+		this.add(levelView, BorderLayout.SOUTH);
 	}
 	
 	private JPanel createScoreView() {
@@ -60,6 +64,25 @@ public class GameView extends JPanel implements Observer {
 		scoreView.add(scorePanel2, BorderLayout.SOUTH);
 		
 		return scoreView;
+	}
+	
+	private JPanel createLevelView() {
+		JPanel levelView = new JPanel();
+		levelView.setLayout(new BorderLayout());
+		levelView.setOpaque(false);
+		
+		JPanel levelPanel1 = new JPanel();
+		levelPanel1.setOpaque(false);
+		levelPanel1.add(new Label("level"));
+		
+		JPanel levelPanel2 = new JPanel();
+		levelPanel2.setOpaque(false);
+		levelPanel2.add(levelLabel);
+		
+		levelView.add(levelPanel1, BorderLayout.NORTH);
+		levelView.add(levelPanel2, BorderLayout.SOUTH);
+		
+		return levelView;
 	}
 
 	@Override
