@@ -15,7 +15,7 @@ public class Label extends JLabel {
 		setOpaque(true);
 		setFont(createFont(large));
 		setForeground(Color.YELLOW);
-		setBackground(Color.DARK_GRAY);
+		setBackground(Color.DARK_GRAY.brighter());
 		setHorizontalAlignment(CENTER);
 		
 		Dimension preferredSize = large ? new Dimension(80, 32) : new Dimension(60, 22);
