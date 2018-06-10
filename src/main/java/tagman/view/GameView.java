@@ -38,6 +38,12 @@ public class GameView extends JPanel implements Observer {
 		
 		this.scoreLabel = new Label("00", true);
 		
+		JPanel scoreView = createScoreView();
+		
+		this.add(scoreView, BorderLayout.NORTH);
+	}
+	
+	private JPanel createScoreView() {
 		JPanel scoreView = new JPanel();
 		scoreView.setLayout(new BorderLayout());
 		scoreView.setOpaque(false);
@@ -53,7 +59,7 @@ public class GameView extends JPanel implements Observer {
 		scoreView.add(scorePanel1, BorderLayout.NORTH);
 		scoreView.add(scorePanel2, BorderLayout.SOUTH);
 		
-		this.add(scoreView, BorderLayout.NORTH);
+		return scoreView;
 	}
 
 	@Override
