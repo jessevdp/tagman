@@ -60,7 +60,6 @@ public class TimeView extends JPanel implements Observer {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		timeBar.repaint();
 		timeLabel.setText(timeController.getCurrentValue());
 	}
 
