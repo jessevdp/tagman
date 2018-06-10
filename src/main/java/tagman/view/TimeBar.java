@@ -10,12 +10,12 @@ import tagman.controller.TimeController;
 @SuppressWarnings("serial")
 public class TimeBar extends JPanel {
 	
-	private static Color DEFAULT_COLOR = Color.CYAN;
-	private static Color HALFWAY_DONE_COLOR = Color.ORANGE;
-	private static Color ALMOST_DONE_COLOR = Color.RED;
-	private static Color BACKGROUND_COLOR = Color.DARK_GRAY.brighter();
+	private static final Color DEFAULT_COLOR = Color.CYAN;
+	private static final Color HALFWAY_DONE_COLOR = Color.ORANGE;
+	private static final Color ALMOST_DONE_COLOR = Color.RED;
+	private static final Color BACKGROUND_COLOR = Color.DARK_GRAY.brighter();
 	
-	private static int HEIGHT_WHEN_EMPTY = 2;
+	private static final int HEIGHT_WHEN_EMPTY = 2;
 
 	TimeController timeController;
 	
