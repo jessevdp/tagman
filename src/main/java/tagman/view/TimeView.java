@@ -57,6 +57,7 @@ public class TimeView extends JPanel implements Observer {
 		repaint();
 	}
 	
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		timeBar.repaint();

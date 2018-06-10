@@ -21,6 +21,7 @@ public class TimeBar extends JPanel {
 		setOpaque(false);
 	}
 	
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
