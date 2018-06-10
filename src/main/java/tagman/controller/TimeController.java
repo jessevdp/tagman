@@ -46,6 +46,10 @@ public class TimeController extends Observable implements Runnable {
 	private void executeStep() {
 		int step = getStep();
 		int newValue = currentValue + step;
+		
+		if (step > 0 && newValue > END_VALUE) return;
+		if (step < 0 && newValue < END_VALUE) return;
+		
 		setCurrentValue(newValue);
 	}
 	
