@@ -69,7 +69,7 @@ public class TimeController extends Observable implements Runnable {
 	 * 
 	 * @return actual step value, including direction.
 	 */
-	private int getStep () {
+	public static int getStep () {
 		int step = Math.abs(STEP_AMOUNT);
 		if (START_VALUE > END_VALUE) {
 			step = (step * -1);
