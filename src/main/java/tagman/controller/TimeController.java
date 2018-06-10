@@ -12,7 +12,6 @@ public class TimeController extends Observable implements Runnable {
 	
 	private int currentValue;
 	private boolean playing;
-	private Thread thread;
 
 	public TimeController() {
 		this.playing = false;
@@ -21,13 +20,11 @@ public class TimeController extends Observable implements Runnable {
 	
 	public void start() {
 		playing = true;
-		thread = new Thread(this);
-		thread.start();
+		new Thread(this).start();
 	}
 	
 	public void stop() {
 		playing = false;
-		if (thread != null) thread.interrupt();
 	}
 	
 	public void reset() {
