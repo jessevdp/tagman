@@ -34,6 +34,10 @@ public class Label extends JLabel {
 		this(value, false);
 	}
 	
+	public void setText(int value) {
+		super.setText("" + value);
+	}
+	
 	private Font createFont(boolean large) {
 		int size = large ? 24 : 12;
 		Font current = getFont();
