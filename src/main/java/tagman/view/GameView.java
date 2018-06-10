@@ -1,5 +1,6 @@
 package tagman.view;
 
+import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -20,7 +21,12 @@ public class GameView extends JPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-
+		repaint();
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 	}
 
 }
