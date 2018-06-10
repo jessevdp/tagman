@@ -23,10 +23,5 @@ public class GameView extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		repaint();
 	}
-	
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
 
 }
