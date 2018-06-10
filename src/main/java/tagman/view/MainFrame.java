@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		setTitle("TagMan by Jesse van der Pluijm");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 		
 		pack();
 		setLocationRelativeTo(null);
