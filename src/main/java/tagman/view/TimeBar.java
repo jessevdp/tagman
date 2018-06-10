@@ -13,6 +13,9 @@ public class TimeBar extends JPanel {
 	private static Color DEFAULT_COLOR = Color.CYAN;
 	private static Color HALFWAY_DONE_COLOR = Color.ORANGE;
 	private static Color ALMOST_DONE_COLOR = Color.RED;
+	private static Color BACKGROUND_COLOR = Color.DARK_GRAY.brighter();
+	
+	private static int HEIGHT_WHEN_EMPTY = 2;
 
 	TimeController timeController;
 	
@@ -25,9 +28,6 @@ public class TimeBar extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		Color barColor = calculateColor();
-		g.setColor(barColor);
-		
 		int width = this.getWidth();
 		int height = this.getHeight();
 
@@ -36,6 +36,11 @@ public class TimeBar extends JPanel {
 		int x = barWidth / 2;
 		int y = height - barHeight;
 		
+		g.setColor(BACKGROUND_COLOR);
+		g.fillRect(x, 0, barWidth, height);
+		
+		Color barColor = calculateBarColor();
+		g.setColor(barColor);
 		g.fillRect(x, y, barWidth, barHeight);
 	}
 	
@@ -44,10 +49,13 @@ public class TimeBar extends JPanel {
 		int heightPerStep = height / amountOfSteps;
 		int amountOfStepsLeft = calculateAmountOfStepsLeft();
 		
-		return amountOfStepsLeft * heightPerStep;
+		int barHeight = amountOfStepsLeft * heightPerStep;
+		if (barHeight <= 0) barHeight = HEIGHT_WHEN_EMPTY;
+		
+		return barHeight;
 	}
 	
-	private Color calculateColor() {
+	private Color calculateBarColor() {
 		Color color = DEFAULT_COLOR;
 		
 		int amountOfSteps = calculateAmountOfSteps();
