@@ -31,7 +31,7 @@ public class TimeController extends Observable implements Runnable {
 	}
 	
 	public void reset() {
-		this.currentValue = START_VALUE;
+		setCurrentValue(START_VALUE);
 	}
 	
 	@Override
