@@ -5,8 +5,8 @@ import java.awt.Point;
 
 public class Dash extends GameObject {
 	
-	private static final int DEFAULT_WIDTH = 20;
-	private static final int DEFAULT_HEIGHT = 80;
+	private static final int DEFAULT_WIDTH = 10;
+	private static final int DEFAULT_HEIGHT = 40;
 	private static final int DEFAULT_Y_POSITION = 0;
 	
 	public Dash(Point position) {
