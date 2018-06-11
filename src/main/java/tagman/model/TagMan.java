@@ -4,9 +4,11 @@ import java.awt.Dimension;
 import java.awt.Point;
 
 public class TagMan extends GameObject {
-
+	
+	private static final int DEFAULT_SIZE = 80;
+	
 	public TagMan(Point position) {
-		super(new Dimension(80, 80), position);
+		super(position, new Dimension(DEFAULT_SIZE, DEFAULT_SIZE));
 	}
 	
 	public TagMan(int x, int y) {
