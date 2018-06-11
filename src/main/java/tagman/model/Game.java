@@ -32,6 +32,23 @@ public class Game extends Observable {
 				));
 	}
 	
+	public void start () {
+		new Thread(() -> {
+			while(true) {
+				for (Dash dash : dashes) {
+					dash.move();
+					setChanged();
+					notifyObservers();
+				}
+				try {
+					Thread.sleep(1000 / 60);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}).start();
+	}
+	
 	public TagMan getTagMan() {
 		return this.tagMan;
 	}
