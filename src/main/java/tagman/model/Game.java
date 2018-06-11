@@ -2,6 +2,7 @@ package tagman.model;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
 public class Game extends Observable {
@@ -14,9 +15,21 @@ public class Game extends Observable {
 
 	public Game() {
 		
-		this.tagMan = new TagMan(50, 350);
-		this.walls = new ArrayList<>();
-		this.dashes = new ArrayList<>();
+		this.tagMan = new TagMan(5, 325);
+		this.walls = new ArrayList<>(Arrays.asList(
+					new Wall(0, 0, 60, 315),
+					new Wall(0, 385, 60, 315),
+					new Wall(940, 0, 60, 315),
+					new Wall(940, 385, 60, 315),
+					new Wall(180, 270, 40, 160)
+				));
+		this.dashes = new ArrayList<>(Arrays.asList(
+					new Dash(120),
+					new Dash(220),
+					new Dash(320),
+					new Dash(420),
+					new Dash(520)
+				));
 	}
 	
 	public TagMan getTagMan() {
