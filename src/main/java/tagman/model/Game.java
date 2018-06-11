@@ -12,9 +12,10 @@ public class Game extends Observable {
 	private ArrayList<Dash> dashes;
 	private ArrayList<Wall> walls;
 	private TagMan tagMan;
+	
+	private int currentFrame;
 
 	public Game() {
-		
 		this.tagMan = new TagMan(5, 325);
 		this.walls = new ArrayList<>(Arrays.asList(
 					new Wall(0, 0, 60, 315),
@@ -24,11 +25,11 @@ public class Game extends Observable {
 					new Wall(180, 270, 40, 160)
 				));
 		this.dashes = new ArrayList<>(Arrays.asList(
-					new Dash(120, 3),
-					new Dash(220, 1),
-					new Dash(320, 2),
-					new Dash(420, 1),
-					new Dash(520, 1)
+					new Dash(120, 2, 30),
+					new Dash(220, 1, 60),
+					new Dash(320, 2, 90),
+					new Dash(420, 1, 45),
+					new Dash(520, 1, 90)
 				));
 	}
 	
@@ -47,6 +48,15 @@ public class Game extends Observable {
 				}
 			}
 		}).start();
+	public void moveDashes() {
+		for (Dash dash : dashes) {
+			dash.move(currentFrame);
+		}
+		setChanged();
+	}
+	
+	public void increaseFrame() {
+		this.currentFrame++;
 	}
 	
 	public TagMan getTagMan() {
