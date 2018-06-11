@@ -9,10 +9,22 @@ public class Game extends Observable {
 	private ArrayList<Wall> walls;
 	private TagMan tagMan;
 
-	public Game () {
-		this.dashes = new ArrayList<>();
-		this.walls = new ArrayList<>();
+	public Game() {
 		this.tagMan = new TagMan(50, 350);
+		this.walls = new ArrayList<>();
+		this.dashes = new ArrayList<>();
+	}
+	
+	public TagMan getTagMan() {
+		return this.tagMan;
+	}
+	
+	public ArrayList<Wall> getWalls() {
+		return this.walls;
+	}
+	
+	public ArrayList<Dash> getDashes() {
+		return this.dashes;
 	}
 
 }
