@@ -36,7 +36,8 @@ public class TagMan extends GameObject {
 	private int getSpeed(Direction direction) {
 		int speed = MAX_SPEED;
 		if (direction == Direction.NORTH_EAST || direction == Direction.SOUTH_EAST) {
-			speed = (2 / 3) * speed;
+			double factor = (2D / 3D);
+			speed = (int) Math.ceil(factor * speed);
 		}
 		return speed;
 	}
