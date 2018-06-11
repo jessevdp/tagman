@@ -1,6 +1,7 @@
 package tagman.model;
 
 import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
@@ -29,15 +30,32 @@ public class Game extends Observable {
 					new Dash(220, 1, 60),
 					new Dash(320, 2, 90),
 					new Dash(420, 1, 45),
-					new Dash(520, 1, 90)
+					new Dash(520, 2, 180)
 				));
 	}
 	
 	public void moveDashes() {
+		if (!(dashes.size() > 0)) return;
+
 		for (Dash dash : dashes) {
 			dash.move(currentFrame);
 		}
+		cleanUpDashes();
 		setChanged();
+	}
+	
+	/**
+	 * Remove any dashes that are no longer
+	 * inside the world.
+	 */
+	private void cleanUpDashes() {
+		Rectangle world = new Rectangle(WORLD_SIZE);
+		for (int i = dashes.size() - 1; i >= 0; i--) {
+			Rectangle hitbox = dashes.get(i).getHitbox();
+			if (!world.intersects(hitbox)) {
+				dashes.remove(i);
+			}
+		}
 	}
 	
 	public void increaseFrame() {
