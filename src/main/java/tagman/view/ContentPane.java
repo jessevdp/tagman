@@ -11,7 +11,7 @@ import tagman.controller.MainController;
 public class ContentPane extends JPanel {
 	
 	private static final Color BACKGROUND_COLOR = Color.DARK_GRAY;
-	private static final int PADDING_BETWEEN_INFO = 5;
+	private static final int PADDING_BETWEEN = 5;
 	
 	PlayView playView;
 	GameView gameView;
@@ -25,7 +25,7 @@ public class ContentPane extends JPanel {
 		setBackground(BACKGROUND_COLOR);
 		
 		JPanel infoPanel = new JPanel();
-		infoPanel.setLayout(new BorderLayout(0, PADDING_BETWEEN_INFO));
+		infoPanel.setLayout(new BorderLayout(PADDING_BETWEEN, PADDING_BETWEEN));
 		infoPanel.setOpaque(false);
 		infoPanel.add(gameView, BorderLayout.NORTH);
 		infoPanel.add(timeView, BorderLayout.CENTER);
