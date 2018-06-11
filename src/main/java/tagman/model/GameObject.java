@@ -6,7 +6,7 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 	
-	Rectangle hitbox;
+	private Rectangle hitbox;
 
 	public GameObject(Rectangle hitbox) {
 		this.hitbox = hitbox;
