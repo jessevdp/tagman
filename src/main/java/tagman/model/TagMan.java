@@ -25,6 +25,14 @@ public class TagMan extends GameObject {
 		setPosition(x, y);
 	}
 	
+	public Rectangle getHitboxAfterMove(Direction direction) {
+		Rectangle newHitbox = new Rectangle(getHitbox());
+		int speed = getSpeed(direction);
+		newHitbox.x += (speed * direction.getHorizontalDirection());
+		newHitbox.y += (speed * direction.getVerticalDirection());
+		return newHitbox;
+	}
+	
 	/**
 	 * Applies potential modifications to the MAX_SPEED
 	 * to come to the actual speed. (If TagMan moves diagonal
