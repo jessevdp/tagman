@@ -24,11 +24,11 @@ public class Game extends Observable {
 					new Wall(180, 270, 40, 160)
 				));
 		this.dashes = new ArrayList<>(Arrays.asList(
-					new Dash(120),
-					new Dash(220),
-					new Dash(320),
-					new Dash(420),
-					new Dash(520)
+					new Dash(120, 3),
+					new Dash(220, 1),
+					new Dash(320, 2),
+					new Dash(420, 1),
+					new Dash(520, 1)
 				));
 	}
 	
