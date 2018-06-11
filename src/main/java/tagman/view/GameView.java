@@ -19,7 +19,7 @@ import tagman.view.util.Label;
 public class GameView extends JPanel implements Observer {
 	
 	private static final Color BACKGROUND_COLOR = Color.BLACK;
-	private static final Dimension PREFERRED_SIZE = new Dimension(100, 200);
+	private static final Dimension PREFERRED_SIZE = new Dimension(100, 195);
 	
 	private static final int PADDING_TOP = 10;
 	private static final int PADDING_BOTTOM = 10;
