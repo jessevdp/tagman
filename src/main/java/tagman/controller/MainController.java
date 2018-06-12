@@ -27,7 +27,8 @@ public class MainController {
 		new Thread(() -> {
 			while (true) {
 				game.moveDashes();
-				moveTagMan(Direction.EAST);
+				Direction direction = inputController.getDirection();
+				moveTagMan(direction);
 				game.increaseFrame();
 				game.notifyObservers();
 				try {

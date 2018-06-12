@@ -13,6 +13,28 @@ public class InputController {
 		this.input = new Input();
 	}
 	
+	public Direction getDirection() {
+		
+		if ((input.pressedArrowNorth() && input.pressedArrowEast()) || input.pressedNumpadNorthEast()) {
+			return Direction.NORTH_EAST;
+		}
+		else if ((input.pressedArrowSouth() && input.pressedArrowEast()) || input.pressedNumpadSouthEast()) {
+			return Direction.SOUTH_EAST;
+		}
+		else if (input.pressedArrowNorth() || input.pressedNumpadNorth()) {
+			return Direction.NORTH;
+		}
+		else if (input.pressedArrowEast() || input.pressedNumpadEast()) {
+			return Direction.EAST;
+		}
+		else if (input.pressedArrowSouth() || input.pressedNumpadSouth()) {
+			return Direction.SOUTH;
+		}
+		else {
+			return Direction.NONE;
+		}
+	}
+	
 	public void handleKeyPress(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
