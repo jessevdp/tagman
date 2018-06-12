@@ -25,26 +25,45 @@ public class MainController {
 		this.mainFrame = new MainFrame(this);
 		
 		timeController.start();
+		game.start();
+		startGameThread();
+	}
+	
+	private void startGameThread() {
+		int milisecondsPerFrame = (1000 / Game.FRAMES_PER_SECOND);
 		
-		new Thread(() -> {
-			while (true) {
-				game.moveDashes();
-				moveTagMan(inputController.getDirection());
+		Runnable gameRunnable = () -> {
+			while (game.isRunning()) {
+				long startTime = System.currentTimeMillis();
+				processFrame();
+				long endTime = System.currentTimeMillis();
+				long timeToProcess = endTime - startTime;
+
+				long milisecondsToSleep = milisecondsPerFrame - timeToProcess;
+				if (milisecondsToSleep < 0) milisecondsToSleep = 0;
 				
-				boolean isHit = checkDashCollision();
-				if (isHit) {
-					endGame(false);
-				}
-				
-				game.increaseFrame();
-				game.notifyObservers();
 				try {
-					Thread.sleep(1000 / 60);
+					Thread.sleep(milisecondsToSleep);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
-		}).start();
+		};
+		
+		new Thread(gameRunnable).start();;
+	}
+	
+	private void processFrame() {
+		game.moveDashes();
+		moveTagMan(inputController.getDirection());
+		
+		boolean isHit = checkDashCollision();
+		if (isHit) {
+			endGame(false);
+		}
+		
+		game.increaseFrame();
+		game.notifyObservers();
 	}
 	
 	private void moveTagMan(Direction direction) {
