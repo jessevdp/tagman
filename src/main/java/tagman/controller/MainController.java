@@ -57,6 +57,7 @@ public class MainController {
 		}
 		
 		tagMan.move(direction);
+		game.setChanged();
 	}
 
 	public TimeController getTimeController() {

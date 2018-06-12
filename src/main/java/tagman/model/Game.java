@@ -73,5 +73,21 @@ public class Game extends Observable {
 	public ArrayList<Dash> getDashes() {
 		return this.dashes;
 	}
+	
+	/*
+	 * This method needs to be made public in order for
+	 * it to be called from the MainController. (Where we
+	 * move TagMan.)
+	 * 
+	 * If we can't call this from the MainController the
+	 * observers of Game (this class) might not get notified
+	 * when TagMan moves.
+	 * 
+	 * This override only changes access to this method.
+	 */
+	@Override
+	public synchronized void setChanged() {
+		super.setChanged();
+	}
 
 }
