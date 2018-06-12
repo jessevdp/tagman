@@ -56,6 +56,7 @@ public class Game extends Observable {
 	private TagMan tagMan;
 	
 	private int currentLevel;
+	private ArrayList<Integer> score;
 	
 	private boolean isRunning;
 	private int currentFrame;
@@ -64,6 +65,7 @@ public class Game extends Observable {
 		this.tagMan = new TagMan(5, 325);
 		this.walls = new ArrayList<>();
 		this.dashes = new ArrayList<>();
+		this.score = new ArrayList<>();
 		this.currentLevel = -1;
 	}
 	
@@ -160,6 +162,19 @@ public class Game extends Observable {
 		if (isRunning) return false;
 		return true;
 	}
+	
+	public int getTotalScore() {
+		int totalScore = 0;
+		for (Integer score : this.score) {
+			totalScore += score;
+		}
+		return totalScore;
+	}
+	
+	public void addScoreForCurrentLevel(int amount) {
+		if (!(currentLevel >= 0)) return;
+		score.add(currentLevel, amount);
+	} 
 	
 	/*
 	 * This method needs to be made public in order for it
