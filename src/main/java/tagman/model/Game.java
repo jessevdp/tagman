@@ -11,6 +11,8 @@ public class Game extends Observable {
 	public static final Dimension WORLD_SIZE = new Dimension(1000, 700);
 	public static final int FRAMES_PER_SECOND = 60;
 	
+	public static final Rectangle FINISH = new Rectangle(940, 315, 60, 60);
+	
 	private static final ArrayList<ArrayList<GameObject>> levels = new ArrayList<>(Arrays.asList(
 				new ArrayList<GameObject>(Arrays.asList(
 						new Wall(0, 0, 60, 315),

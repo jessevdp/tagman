@@ -61,6 +61,13 @@ public class MainController {
 			endLevel();
 		}
 		
+		boolean hasFinished = checkFinished();
+		System.out.println(hasFinished);
+		if (hasFinished) {
+			game.getTagMan().setFinished();
+			endLevel();
+		}
+		
 		game.increaseFrame();
 		game.notifyObservers();
 	}
@@ -96,6 +103,11 @@ public class MainController {
 		}
 		
 		return false;
+	}
+	
+	private boolean checkFinished() {
+		Rectangle tagMan = game.getTagMan().getHitbox();
+		return Game.FINISH.contains(tagMan);
 	}
 	
 	private void endLevel() {
