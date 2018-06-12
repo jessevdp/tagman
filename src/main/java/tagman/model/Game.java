@@ -29,7 +29,26 @@ public class Game extends Observable {
 							new Dash(750, 1, 1000),
 							new Dash(850, 2, 1500),
 							new Dash(950, 1, 1250)
-						))
+						)),
+				new ArrayList<GameObject>(Arrays.asList(
+						new Wall(0, 0, 60, 315),
+						new Wall(0, 385, 60, 315),
+						new Wall(940, 0, 60, 315),
+						new Wall(940, 385, 60, 315),
+						new Wall(270, 270, 40, 160),
+						
+						new TagMan(5, 325),
+						
+						new Dash(150, 2, 500),
+						new Dash(250, 1, 1000),
+						new Dash(350, 2, 2000),
+						new Dash(450, 1, 1500),
+						new Dash(550, 2, 10000),
+						new Dash(650, 2, 3000),
+						new Dash(750, 1, 1000),
+						new Dash(850, 2, 1500),
+						new Dash(950, 1, 1250)
+					))
 			));
 	
 	private ArrayList<Dash> dashes;
