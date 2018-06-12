@@ -13,24 +13,36 @@ public class Dash extends GameObject {
 	private static final Direction DIRECTION = Direction.SOUTH;
 	
 	private int speed;
-	private int startFrame;
+	private int startTime;
 	
-	public Dash(Point position, int speed, int startFrame) {
+	/**
+	 * Constructor for Dash.
+	 * 
+	 * @param x The X position that the dash should start at. (Y defaults to 0.)
+	 * @param speed The amount of pixels a dash should move every frame.
+	 * @param startTime The time at which the dash should start moving (milliseconds).
+	 */
+	public Dash(int x, int speed, int startTime) {
+		this(x, DEFAULT_Y_POSITION, speed, startTime);
+	}
+	
+	private Dash(int x, int y, int speed, int startTime) {
+		this(new Point(x, y), speed, startTime);
+	}
+	
+	private Dash(Point position, int speed, int startTime) {
 		super(position, new Dimension(DEFAULT_WIDTH, DEFAULT_HEIGHT));
 		this.speed = speed;
-		this.startFrame = startFrame;
+		this.startTime = startTime;
 	}
 	
-	public Dash(int x, int y, int speed, int startFrame) {
-		this(new Point(x, y), speed, startFrame);
-	}
-	
-	public Dash(int x, int speed, int startFrame) {
-		this(x, DEFAULT_Y_POSITION, speed, startFrame);
-	}
-	
-	public void move(int currentFrame) {
-		if (currentFrame < startFrame) return;
+	/**
+	 * Move the Dash to it's next position.
+	 * 
+	 * @param currentTime The amount of milliseconds elapsed since the start of the game.
+	 */
+	public void move(int currentTime) {
+		if (currentTime < startTime) return;
 
 		Rectangle hitbox = getHitbox();
 		int x = hitbox.x + (speed * DIRECTION.getHorizontalDirection());

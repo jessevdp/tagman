@@ -9,6 +9,7 @@ import java.util.Observable;
 public class Game extends Observable {
 	
 	public static final Dimension WORLD_SIZE = new Dimension(1000, 700);
+	public static final int FRAMES_PER_SECOND = 60;
 	
 	private static final ArrayList<ArrayList<GameObject>> levels = new ArrayList<>(Arrays.asList(
 				new ArrayList<GameObject>(Arrays.asList(
@@ -19,15 +20,15 @@ public class Game extends Observable {
 							
 							new TagMan(5, 325),
 							
-							new Dash(150, 2, 30),
-							new Dash(250, 1, 60),
-							new Dash(350, 2, 90),
-							new Dash(450, 1, 45),
-							new Dash(550, 2, 180),
-							new Dash(650, 2, 30),
-							new Dash(750, 1, 60),
-							new Dash(850, 2, 90),
-							new Dash(950, 1, 45)
+							new Dash(150, 2, 500),
+							new Dash(250, 1, 1000),
+							new Dash(350, 2, 2000),
+							new Dash(450, 1, 1500),
+							new Dash(550, 2, 10000),
+							new Dash(650, 2, 3000),
+							new Dash(750, 1, 1000),
+							new Dash(850, 2, 1500),
+							new Dash(950, 1, 1250)
 						))
 			));
 	
@@ -49,7 +50,8 @@ public class Game extends Observable {
 		if (!(dashes.size() > 0)) return;
 
 		for (Dash dash : dashes) {
-			dash.move(currentFrame);
+			int milisecondsSinceStart = getMilisecondsSinceStart();
+			dash.move(milisecondsSinceStart);
 		}
 		cleanUpDashes();
 		setChanged();
@@ -103,6 +105,12 @@ public class Game extends Observable {
 	
 	public ArrayList<Dash> getDashes() {
 		return this.dashes;
+	}
+	
+	public int getMilisecondsSinceStart() {
+		double framesPerMilisecond = (FRAMES_PER_SECOND / 1000D);
+		int milisecondsSinceStart = (int) Math.floor(currentFrame / framesPerMilisecond);
+		return milisecondsSinceStart;
 	}
 	
 	/*
