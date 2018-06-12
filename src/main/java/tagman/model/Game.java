@@ -106,13 +106,14 @@ public class Game extends Observable {
 	}
 	
 	/*
-	 * This method needs to be made public in order for
-	 * it to be called from the MainController. (Where we
-	 * move TagMan.)
+	 * This method needs to be made public in order for it
+	 * to be called from the MainController. (Where we move
+	 * TagMan.)
 	 * 
-	 * If we can't call this from the MainController the
-	 * observers of Game (this class) might not get notified
-	 * when TagMan moves.
+	 * If we can't call this method from the MainController
+	 * the observers of Game (this class) might not get
+	 * notified when TagMan moves. (Unless some other event
+	 * sets Game as changed. [For example Dash movement.])
 	 * 
 	 * This override only changes access to this method.
 	 */
