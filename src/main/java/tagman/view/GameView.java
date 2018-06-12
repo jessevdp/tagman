@@ -98,7 +98,7 @@ public class GameView extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		scoreLabel.setText(game.getTotalScore()); // TODO implement actual value
+		scoreLabel.setText(game.getTotalScore());
 		levelLabel.setText(getCurrentLevel());
 	}
 
