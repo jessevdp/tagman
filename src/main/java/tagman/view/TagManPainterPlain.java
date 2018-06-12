@@ -8,7 +8,8 @@ import tagman.model.TagMan;
 
 public class TagManPainterPlain {
 	
-	protected static void paint(Graphics g, TagMan tagMan, boolean won) {
+	protected static void paint(Graphics g, TagMan tagMan) {
+		boolean won = tagMan.hasFinished();
 		Rectangle hitbox = tagMan.getHitbox();
 		
 		Color outerColor = won ? Color.GREEN.darker().darker() : Color.RED;
@@ -18,10 +19,6 @@ public class TagManPainterPlain {
 		drawPart(g, hitbox, outerColor);
 		drawPart(g, hitbox, middleColor, 8);
 		drawPart(g, hitbox, innerColor, 24);
-	}
-	
-	protected static void paint(Graphics g, TagMan tagMan) {
-		paint(g, tagMan, false);
 	}
 	
 	private static void drawPart(Graphics g, Rectangle hitbox, Color color, int smaller) {
