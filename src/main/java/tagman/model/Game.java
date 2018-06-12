@@ -36,6 +36,7 @@ public class Game extends Observable {
 	private ArrayList<Wall> walls;
 	private TagMan tagMan;
 	
+	private boolean isRunning;
 	private int currentFrame;
 
 	public Game() {
@@ -91,8 +92,26 @@ public class Game extends Observable {
 		}
 	}
 	
+	public int getMilisecondsSinceStart() {
+		double framesPerMilisecond = (FRAMES_PER_SECOND / 1000D);
+		int milisecondsSinceStart = (int) Math.floor(currentFrame / framesPerMilisecond);
+		return milisecondsSinceStart;
+	}
+	
 	public void increaseFrame() {
 		this.currentFrame++;
+	}
+	
+	public void start() {
+		this.isRunning = true;
+	}
+	
+	public void stop() {
+		this.isRunning = false;
+	}
+	
+	public boolean isRunning() {
+		return this.isRunning;
 	}
 	
 	public TagMan getTagMan() {
@@ -105,12 +124,6 @@ public class Game extends Observable {
 	
 	public ArrayList<Dash> getDashes() {
 		return this.dashes;
-	}
-	
-	public int getMilisecondsSinceStart() {
-		double framesPerMilisecond = (FRAMES_PER_SECOND / 1000D);
-		int milisecondsSinceStart = (int) Math.floor(currentFrame / framesPerMilisecond);
-		return milisecondsSinceStart;
 	}
 	
 	/*
