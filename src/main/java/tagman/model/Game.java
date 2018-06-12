@@ -10,6 +10,27 @@ public class Game extends Observable {
 	
 	public static final Dimension WORLD_SIZE = new Dimension(1000, 700);
 	
+	private static final ArrayList<ArrayList<GameObject>> levels = new ArrayList<>(Arrays.asList(
+				new ArrayList<GameObject>(Arrays.asList(
+							new Wall(0, 0, 60, 315),
+							new Wall(0, 385, 60, 315),
+							new Wall(940, 0, 60, 315),
+							new Wall(940, 385, 60, 315),
+							
+							new TagMan(5, 325),
+							
+							new Dash(150, 2, 30),
+							new Dash(250, 1, 60),
+							new Dash(350, 2, 90),
+							new Dash(450, 1, 45),
+							new Dash(550, 2, 180),
+							new Dash(650, 2, 30),
+							new Dash(750, 1, 60),
+							new Dash(850, 2, 90),
+							new Dash(950, 1, 45)
+						))
+			));
+	
 	private ArrayList<Dash> dashes;
 	private ArrayList<Wall> walls;
 	private TagMan tagMan;
@@ -18,20 +39,10 @@ public class Game extends Observable {
 
 	public Game() {
 		this.tagMan = new TagMan(5, 325);
-		this.walls = new ArrayList<>(Arrays.asList(
-					new Wall(0, 0, 60, 315),
-					new Wall(0, 385, 60, 315),
-					new Wall(940, 0, 60, 315),
-					new Wall(940, 385, 60, 315),
-					new Wall(180, 270, 40, 160)
-				));
-		this.dashes = new ArrayList<>(Arrays.asList(
-					new Dash(120, 2, 30),
-					new Dash(220, 1, 60),
-					new Dash(320, 2, 90),
-					new Dash(420, 1, 45),
-					new Dash(520, 2, 180)
-				));
+		this.walls = new ArrayList<>();
+		this.dashes = new ArrayList<>();
+		
+		loadLevel(0);
 	}
 	
 	public void moveDashes() {
@@ -54,6 +65,26 @@ public class Game extends Observable {
 			Rectangle hitbox = dashes.get(i).getHitbox();
 			if (!world.intersects(hitbox)) {
 				dashes.remove(i);
+			}
+		}
+	}
+	
+	public void loadLevel(int level) {
+		dashes.clear();
+		walls.clear();
+		ArrayList<GameObject> levelObjects = levels.get(level);
+		
+		for (GameObject gameObject : levelObjects) {
+			if (gameObject instanceof Wall) {
+				Wall wall = (Wall) gameObject;
+				walls.add(wall);
+			}
+			if (gameObject instanceof Dash) {
+				Dash dash = (Dash) gameObject;
+				dashes.add(dash);
+			}
+			if (gameObject instanceof TagMan) {
+				tagMan = (TagMan) gameObject;
 			}
 		}
 	}
