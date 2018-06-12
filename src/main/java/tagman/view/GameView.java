@@ -38,7 +38,7 @@ public class GameView extends JPanel implements Observer {
 		setBorder(BorderFactory.createEmptyBorder(PADDING_TOP, 0, PADDING_BOTTOM, 0));
 		setLayout(new BorderLayout(0, PADDING_BETWEEN));
 		
-		this.scoreLabel = new Label("00", true);
+		this.scoreLabel = new Label(game.getTotalScore(), true);
 		this.levelLabel = new Label(getCurrentLevel(), true);
 		
 		JPanel scoreView = createScoreView();
@@ -98,7 +98,7 @@ public class GameView extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		scoreLabel.setText(0); // TODO implement actual value
+		scoreLabel.setText(game.getTotalScore()); // TODO implement actual value
 		levelLabel.setText(getCurrentLevel());
 	}
 
