@@ -71,6 +71,11 @@ public class InputController {
 	public void handleKeyRelease(KeyEvent e) {
 		
 		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			System.exit(0);
+			break;
+
+		// MOVEMENT KEYS:
 		case KeyEvent.VK_UP:
 			input.setArrowNorth(false);
 			break;
@@ -95,6 +100,7 @@ public class InputController {
 		case KeyEvent.VK_NUMPAD2:
 			input.setNumpadSouth(false);
 			break;
+			
 		default:
 			break;
 		}
@@ -102,7 +108,7 @@ public class InputController {
 	}
 	
 	public void handleKeyType(KeyEvent e) {
-		
+
 	}
 
 }
