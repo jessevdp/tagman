@@ -25,6 +25,7 @@ public class MainController {
 		this.mainFrame = new MainFrame(this);
 		
 		timeController.start();
+		nextLevel();
 		game.start();
 		startGameThread();
 	}
@@ -101,6 +102,12 @@ public class MainController {
 	
 	private void endGame(boolean won) {
 		
+	}
+	
+	private void nextLevel() {
+		if (game.isRunning()) return;
+		int currentLevel = game.getCurrentLevel();
+		game.loadLevel(currentLevel + 1);
 	}
 
 	public TimeController getTimeController() {
