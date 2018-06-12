@@ -58,7 +58,7 @@ public class MainController {
 		
 		boolean isHit = checkDashCollision();
 		if (isHit) {
-			endLevel(false);
+			endLevel();
 		}
 		
 		game.increaseFrame();
@@ -98,12 +98,15 @@ public class MainController {
 		return false;
 	}
 	
-	private void endLevel(boolean won) {
+	private void endLevel() {
 		game.stop();
 		timeController.stop();
-		if (won) {
+		if (game.getTagMan().hasFinished()) {
 			int score = timeController.getCurrentValue();
 			game.addScore(score);
+			// TODO show end game screen
+		} else {
+			// TODO show GAME OVER screen
 		}
 		game.notifyObservers();
 	}

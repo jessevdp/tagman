@@ -9,6 +9,8 @@ public class TagMan extends GameObject {
 	private static final int SIZE = 50;
 	private static final int MAX_SPEED = 3;
 	
+	private boolean hasFinished;
+	
 	public TagMan(Point position) {
 		super(position, new Dimension(SIZE, SIZE));
 	}
@@ -31,6 +33,14 @@ public class TagMan extends GameObject {
 		newHitbox.x += (speed * direction.getHorizontalDirection());
 		newHitbox.y += (speed * direction.getVerticalDirection());
 		return newHitbox;
+	}
+	
+	public boolean hasFinished() {
+		return this.hasFinished;
+	}
+	
+	public void setFinished() {
+		this.hasFinished = true;
 	}
 	
 	/**
