@@ -12,10 +12,13 @@ public class MainController {
 
 	MainFrame mainFrame;
 	TimeController timeController;
+	InputController inputController;
+	
 	Game game;
 
 	public MainController() {
 		this.timeController = new TimeController();
+		this.inputController = new InputController();
 		this.game = new Game();
 		this.mainFrame = new MainFrame(this);
 		
@@ -57,6 +60,10 @@ public class MainController {
 
 	public TimeController getTimeController() {
 		return this.timeController;
+	}
+	
+	public InputController getInputController() {
+		return this.inputController;
 	}
 
 	public Game getGame() {
