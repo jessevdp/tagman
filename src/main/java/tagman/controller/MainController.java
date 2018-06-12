@@ -62,7 +62,6 @@ public class MainController {
 		}
 		
 		boolean hasFinished = checkFinished();
-		System.out.println(hasFinished);
 		if (hasFinished) {
 			game.getTagMan().setFinished();
 			endLevel();
