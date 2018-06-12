@@ -1,7 +1,9 @@
 package tagman.controller;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
+import tagman.model.Dash;
 import tagman.model.Direction;
 import tagman.model.Game;
 import tagman.model.TagMan;
@@ -27,8 +29,13 @@ public class MainController {
 		new Thread(() -> {
 			while (true) {
 				game.moveDashes();
-				Direction direction = inputController.getDirection();
-				moveTagMan(direction);
+				moveTagMan(inputController.getDirection());
+				
+				boolean isHit = checkDashCollision();
+				if (isHit) {
+					endGame(false);
+				}
+				
 				game.increaseFrame();
 				game.notifyObservers();
 				try {
@@ -58,6 +65,23 @@ public class MainController {
 		
 		tagMan.move(direction);
 		game.setChanged();
+	}
+	
+	private boolean checkDashCollision() {
+		Rectangle tagMan = game.getTagMan().getHitbox();
+		ArrayList<Dash> dashes = game.getDashes();
+		for (Dash dash : dashes) {
+			Rectangle hitbox = dash.getHitbox();
+			if (hitbox.intersects(tagMan)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	private void endGame(boolean won) {
+		
 	}
 
 	public TimeController getTimeController() {
