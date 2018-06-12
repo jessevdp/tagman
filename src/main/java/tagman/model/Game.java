@@ -152,6 +152,15 @@ public class Game extends Observable {
 		return this.currentLevel;
 	}
 	
+	public boolean hasNextLevel() {
+		return currentLevel <= levels.size();
+	}
+	
+	public boolean canEndCurrentLevel() {
+		if (isRunning) return false;
+		return true;
+	}
+	
 	/*
 	 * This method needs to be made public in order for it
 	 * to be called from the MainController. (Where we move

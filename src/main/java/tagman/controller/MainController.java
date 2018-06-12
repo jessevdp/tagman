@@ -105,9 +105,13 @@ public class MainController {
 	}
 	
 	private void nextLevel() {
-		if (game.isRunning()) return;
-		int currentLevel = game.getCurrentLevel();
-		game.loadLevel(currentLevel + 1);
+		if (!game.canEndCurrentLevel()) return;
+		if (game.hasNextLevel()) {
+			int currentLevel = game.getCurrentLevel();
+			game.loadLevel(currentLevel + 1);
+		} else {
+			// TODO: show end game screen
+		}
 	}
 
 	public TimeController getTimeController() {
