@@ -36,6 +36,8 @@ public class Game extends Observable {
 	private ArrayList<Wall> walls;
 	private TagMan tagMan;
 	
+	private int currentLevel;
+	
 	private boolean isRunning;
 	private int currentFrame;
 
@@ -43,8 +45,7 @@ public class Game extends Observable {
 		this.tagMan = new TagMan(5, 325);
 		this.walls = new ArrayList<>();
 		this.dashes = new ArrayList<>();
-		
-		loadLevel(0);
+		this.currentLevel = -1;
 	}
 	
 	public void moveDashes() {
@@ -90,6 +91,8 @@ public class Game extends Observable {
 				tagMan = (TagMan) gameObject;
 			}
 		}
+		
+		this.currentLevel = level;
 	}
 	
 	public int getMilisecondsSinceStart() {
@@ -124,6 +127,10 @@ public class Game extends Observable {
 	
 	public ArrayList<Dash> getDashes() {
 		return this.dashes;
+	}
+	
+	public int getCurrentLevel() {
+		return this.currentLevel;
 	}
 	
 	/*
