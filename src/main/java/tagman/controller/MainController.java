@@ -24,10 +24,8 @@ public class MainController {
 		this.game = new Game();
 		this.mainFrame = new MainFrame(this);
 		
-		timeController.start();
 		nextLevel();
-		game.start();
-		startGameThread();
+		startLevel();
 	}
 	
 	private void startGameThread() {
@@ -60,7 +58,7 @@ public class MainController {
 		
 		boolean isHit = checkDashCollision();
 		if (isHit) {
-			endGame(false);
+			endLevel(false);
 		}
 		
 		game.increaseFrame();
@@ -100,8 +98,21 @@ public class MainController {
 		return false;
 	}
 	
-	private void endGame(boolean won) {
-		
+	private void endLevel(boolean won) {
+		game.stop();
+		timeController.stop();
+		if (won) {
+			int score = timeController.getCurrentValue();
+			game.addScore(score);
+		}
+		game.notifyObservers();
+	}
+	
+	private void startLevel() {
+		game.start();
+		timeController.reset();
+		timeController.start();
+		startGameThread();
 	}
 	
 	private void nextLevel() {

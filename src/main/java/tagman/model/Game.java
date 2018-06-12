@@ -176,6 +176,7 @@ public class Game extends Observable {
 	public void addScore(int amount) {
 		if (currentLevel < 0) return;
 		score.add(amount);
+		this.setChanged();
 	} 
 	
 	/*
