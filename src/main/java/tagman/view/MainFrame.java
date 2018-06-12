@@ -12,6 +12,8 @@ import tagman.controller.MainController;
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame implements KeyListener {
 	
+	private static final String WINDOW_TITLE = "TagMan by Jesse van der Pluijm";
+	
 	ContentPane contentPane;
 	MainController mainController;
 	InputController inputController;
@@ -22,7 +24,7 @@ public class MainFrame extends JFrame implements KeyListener {
 		this.contentPane = new ContentPane(mainController);
 		
 		setContentPane(contentPane);
-		setTitle("TagMan by Jesse van der Pluijm");
+		setTitle(WINDOW_TITLE);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		
