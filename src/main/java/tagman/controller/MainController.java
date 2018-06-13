@@ -138,6 +138,7 @@ public class MainController {
 		if (game.hasNextLevel()) {
 			int currentLevel = game.getCurrentLevel();
 			game.loadLevel(currentLevel + 1);
+			timeController.reset();
 			game.setMessage(Messages.createStartLevelMessage(game.getCurrentLevel()));
 		} else {
 			game.setMessage(Messages.createEndGameMessage(true, game.getTotalScore()));
