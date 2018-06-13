@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 
 import tagman.controller.MainController;
 import tagman.model.Dash;
@@ -22,13 +23,22 @@ public class PlayView extends JPanel implements Observer {
 	private static final Color DASH_COLOR = Color.RED;
 	
 	Game game;
+	MessagePanel messagePanel;
 
 	public PlayView(MainController mainController) {
 		this.game = mainController.getGame();
 		game.addObserver(this);
+		
+		this.messagePanel = new MessagePanel();
+		messagePanel.setText(game.getMessage());
 
 		setPreferredSize(Game.WORLD_SIZE);
 		setBackground(BACKGROUND_COLOR);
+		
+		OverlayLayout layout = new OverlayLayout(this);
+		setLayout(layout);
+		
+		add(messagePanel);
 	}
 
 	@Override
