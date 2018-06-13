@@ -23,7 +23,7 @@ public class Game extends Observable {
 						new TagMan(5, 375),
 						
 						new Dash(150, 4, 0),
-						new Dash(250, 3, 500),
+						new Dash(250, 4, 1000),
 						new Dash(350, 2, 1000),
 						new Dash(450, 1, 1500),
 						new Dash(550, 2, 4000),
@@ -38,20 +38,20 @@ public class Game extends Observable {
 						new Wall(0, 435, 60, 365),
 						new Wall(1140, 0, 60, 365),
 						new Wall(1140, 435, 60, 365),
-						new Wall(400, 275, 60, 250),
+						new Wall(400, 275, 40, 250),
 						
 						new TagMan(5, 375),
 						
 						new Dash(150, 4, 0),
-						new Dash(250, 3, 500),
-						new Dash(350, 2, 1000),
-						new Dash(450, 1, 1500),
-						new Dash(550, 2, 4000),
-						new Dash(650, 2, 3000),
-						new Dash(750, 1, 1000),
+						new Dash(250, 4, 1000),
+						new Dash(350, 2, 500),
+						new Dash(450, 2, 1500),
+						new Dash(550, 3, 2500),
+						new Dash(650, 2, 1000),
+						new Dash(750, 3, 1500),
 						new Dash(850, 2, 1500),
-						new Dash(950, 1, 1250),
-						new Dash(1050, 2, 5500)
+						new Dash(950, 3, 2500),
+						new Dash(1050, 2, 4000)
 					))
 			));
 	
