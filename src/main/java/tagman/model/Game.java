@@ -160,7 +160,7 @@ public class Game extends Observable {
 	}
 	
 	public boolean hasNextLevel() {
-		return currentLevel <= levels.size();
+		return (currentLevel + 1) < levels.size();
 	}
 	
 	public boolean canEndCurrentLevel() {
