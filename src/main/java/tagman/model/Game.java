@@ -8,48 +8,50 @@ import java.util.Observable;
 
 public class Game extends Observable {
 	
-	public static final Dimension WORLD_SIZE = new Dimension(1000, 700);
+	public static final Dimension WORLD_SIZE = new Dimension(1200, 800);
 	public static final int FRAMES_PER_SECOND = 60;
 	
-	public static final Rectangle FINISH = new Rectangle(940, 315, 60, 70);
+	public static final Rectangle FINISH = new Rectangle(1140, 365, 60, 70);
 	
 	private static final ArrayList<ArrayList<GameObject>> levels = new ArrayList<>(Arrays.asList(
 				new ArrayList<GameObject>(Arrays.asList(
-						new Wall(0, 0, 60, 315),
-						new Wall(0, 385, 60, 315),
-						new Wall(940, 0, 60, 315),
-						new Wall(940, 385, 60, 315),
+						new Wall(0, 0, 60, 365),
+						new Wall(0, 435, 60, 365),
+						new Wall(1140, 0, 60, 365),
+						new Wall(1140, 435, 60, 365),
 						
-						new TagMan(5, 325),
+						new TagMan(5, 375),
 						
-						new Dash(150, 2, 500),
-						new Dash(250, 1, 1000),
-						new Dash(350, 2, 2000),
+						new Dash(150, 4, 0),
+						new Dash(250, 3, 500),
+						new Dash(350, 2, 1000),
 						new Dash(450, 1, 1500),
-						new Dash(550, 2, 10000),
+						new Dash(550, 2, 4000),
 						new Dash(650, 2, 3000),
 						new Dash(750, 1, 1000),
 						new Dash(850, 2, 1500),
-						new Dash(950, 1, 1250)
+						new Dash(950, 1, 1250),
+						new Dash(1050, 2, 5500)
 					)),
 				new ArrayList<GameObject>(Arrays.asList(
-						new Wall(0, 0, 60, 315),
-						new Wall(0, 385, 60, 315),
-						new Wall(940, 0, 60, 315),
-						new Wall(940, 385, 60, 315),
-						new Wall(270, 270, 40, 160),
+						new Wall(0, 0, 60, 365),
+						new Wall(0, 435, 60, 365),
+						new Wall(1140, 0, 60, 365),
+						new Wall(1140, 435, 60, 365),
+						new Wall(400, 275, 60, 250),
 						
-						new TagMan(5, 325),
+						new TagMan(5, 375),
 						
-						new Dash(150, 2, 500),
-						new Dash(250, 1, 1000),
-						new Dash(350, 2, 2000),
+						new Dash(150, 4, 0),
+						new Dash(250, 3, 500),
+						new Dash(350, 2, 1000),
 						new Dash(450, 1, 1500),
-						new Dash(550, 2, 10000),
+						new Dash(550, 2, 4000),
 						new Dash(650, 2, 3000),
 						new Dash(750, 1, 1000),
 						new Dash(850, 2, 1500),
-						new Dash(950, 1, 1250)
+						new Dash(950, 1, 1250),
+						new Dash(1050, 2, 5500)
 					))
 			));
 	

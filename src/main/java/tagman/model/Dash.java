@@ -7,7 +7,7 @@ import java.awt.Rectangle;
 public class Dash extends GameObject {
 	
 	private static final int DEFAULT_WIDTH = 10;
-	private static final int DEFAULT_HEIGHT = 40;
+	private static final int DEFAULT_HEIGHT = 50;
 	private static final int DEFAULT_Y_POSITION = 0;
 
 	private static final Direction DIRECTION = Direction.SOUTH;
