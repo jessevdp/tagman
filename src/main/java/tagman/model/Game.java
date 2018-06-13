@@ -116,6 +116,7 @@ public class Game extends Observable {
 		}
 		
 		this.currentLevel = level;
+		setChanged();
 	}
 	
 	public int getMilisecondsSinceStart() {

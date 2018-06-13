@@ -133,6 +133,7 @@ public class MainController {
 		if (game.hasNextLevel()) {
 			int currentLevel = game.getCurrentLevel();
 			game.loadLevel(currentLevel + 1);
+			game.notifyObservers();
 		} else {
 			// TODO: show end game screen
 		}
