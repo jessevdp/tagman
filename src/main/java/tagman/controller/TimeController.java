@@ -17,12 +17,12 @@ public class TimeController extends Observable implements Runnable {
 
 	public TimeController() {
 		this.playing = false;
-		this.thread = new Thread(this);
 		reset();
 	}
 	
 	public void start() {
 		playing = true;
+		this.thread = new Thread(this);
 		thread.start();
 	}
 	
