@@ -26,12 +26,12 @@ public class Game extends Observable {
 						new Dash(250, 4, 1000),
 						new Dash(350, 2, 1000),
 						new Dash(450, 1, 1500),
-						new Dash(550, 2, 4000),
+						new Dash(550, 4, 3000),
 						new Dash(650, 2, 3000),
 						new Dash(750, 1, 1000),
 						new Dash(850, 2, 1500),
 						new Dash(950, 1, 1250),
-						new Dash(1050, 2, 5500)
+						new Dash(1050, 3, 5000)
 					)),
 				new ArrayList<GameObject>(Arrays.asList(
 						new Wall(0, 0, 60, 365),
@@ -42,11 +42,11 @@ public class Game extends Observable {
 						
 						new TagMan(5, 375),
 						
-						new Dash(150, 4, 0),
-						new Dash(250, 4, 1000),
+						new Dash(150, 5, 0),
+						new Dash(250, 4, 1500),
 						new Dash(350, 2, 500),
 						new Dash(450, 2, 1500),
-						new Dash(550, 3, 2500),
+						new Dash(550, 4, 2500),
 						new Dash(650, 2, 1000),
 						new Dash(750, 3, 1500),
 						new Dash(850, 2, 1500),
