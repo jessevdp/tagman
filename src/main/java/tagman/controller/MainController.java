@@ -16,7 +16,7 @@ public class MainController {
 	MainFrame mainFrame;
 	TimeController timeController;
 	InputController inputController;
-	
+
 	Game game;
 
 	public MainController() {
@@ -24,16 +24,16 @@ public class MainController {
 		this.inputController = new InputController(this);
 		this.game = new Game();
 		this.mainFrame = new MainFrame(this);
-		
+
 		nextLevel();
 		int currentLevel = game.getCurrentPrintableLevel();
 		game.setMessage(Messages.createWelcomeMessage(currentLevel));
 		game.notifyObservers();
 	}
-	
+
 	private void startGameThread() {
 		int milisecondsPerFrame = (1000 / Game.FRAMES_PER_SECOND);
-		
+
 		Runnable gameRunnable = () -> {
 			while (game.isRunning()) {
 				long startTime = System.currentTimeMillis();
@@ -42,8 +42,9 @@ public class MainController {
 				long timeToProcess = endTime - startTime;
 
 				long milisecondsToSleep = milisecondsPerFrame - timeToProcess;
-				if (milisecondsToSleep < 0) milisecondsToSleep = 0;
-				
+				if (milisecondsToSleep < 0)
+					milisecondsToSleep = 0;
+
 				try {
 					Thread.sleep(milisecondsToSleep);
 				} catch (InterruptedException e) {
@@ -51,49 +52,50 @@ public class MainController {
 				}
 			}
 		};
-		
-		new Thread(gameRunnable).start();;
+
+		new Thread(gameRunnable).start();
+		;
 	}
-	
+
 	private void processFrame() {
 		game.moveDashes();
 		moveTagMan(inputController.getDirection());
-		
+
 		boolean isHit = checkDashCollision();
 		if (isHit) {
 			endLevel();
 		}
-		
+
 		boolean hasFinished = checkFinished();
 		if (hasFinished) {
 			game.getTagMan().setFinished();
 			endLevel();
 		}
-		
+
 		game.increaseFrame();
 		game.notifyObservers();
 	}
-	
+
 	private void moveTagMan(Direction direction) {
 		TagMan tagMan = game.getTagMan();
 		Rectangle newLocation = tagMan.getHitboxAfterMove(direction);
-		
+
 		Rectangle world = new Rectangle(Game.WORLD_SIZE);
 		if (!world.contains(newLocation)) {
 			return;
 		}
-		
+
 		for (Wall wall : game.getWalls()) {
 			Rectangle wallHitbox = wall.getHitbox();
 			if (wallHitbox.intersects(newLocation)) {
 				return;
 			}
 		}
-		
+
 		tagMan.move(direction);
 		game.setChanged();
 	}
-	
+
 	private boolean checkDashCollision() {
 		Rectangle tagMan = game.getTagMan().getHitbox();
 		ArrayList<Dash> dashes = game.getDashes();
@@ -103,15 +105,15 @@ public class MainController {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	private boolean checkFinished() {
 		Rectangle tagMan = game.getTagMan().getHitbox();
 		return Game.FINISH.contains(tagMan);
 	}
-	
+
 	private void endLevel() {
 		game.stop();
 		timeController.stop();
@@ -120,23 +122,26 @@ public class MainController {
 			game.addScore(score);
 			game.setMessage(Messages.createEndLevelMessage(score));
 		} else {
+			game.addScore(0);
 			game.setMessage(Messages.createEndGameMessage(false, game.getTotalScore()));
 		}
 		game.notifyObservers();
 	}
-	
+
 	public void startLevel() {
-		if (game.isRunning() || game.currentLevelHasScore()) return;
-		
+		if (game.isRunning() || game.currentLevelHasScore())
+			return;
+
 		game.resetMessage();
 		game.start();
 		timeController.reset();
 		timeController.start();
 		startGameThread();
 	}
-	
+
 	public void nextLevel() {
-		if (!game.canEndCurrentLevel()) return;
+		if (!game.canEndCurrentLevel())
+			return;
 		if (game.hasNextLevel()) {
 			int currentLevel = game.getCurrentLevel();
 			game.loadLevel(currentLevel + 1);
@@ -151,7 +156,7 @@ public class MainController {
 	public TimeController getTimeController() {
 		return this.timeController;
 	}
-	
+
 	public InputController getInputController() {
 		return this.inputController;
 	}

@@ -170,7 +170,7 @@ public class Game extends Observable {
 	public boolean canEndCurrentLevel() {
 		if (currentLevel < 0) return true;
 		boolean hasScore = currentLevelHasScore();
-		if (isRunning || !hasScore) return false;
+		if (isRunning || !hasScore || !tagMan.hasFinished()) return false;
 		return true;
 	}
 	
