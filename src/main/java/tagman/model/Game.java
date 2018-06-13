@@ -159,6 +159,10 @@ public class Game extends Observable {
 		return this.currentLevel;
 	}
 	
+	public int getCurrentPrintableLevel() {
+		return this.currentLevel + 1;
+	}
+	
 	public boolean hasNextLevel() {
 		return (currentLevel + 1) < levels.size();
 	}

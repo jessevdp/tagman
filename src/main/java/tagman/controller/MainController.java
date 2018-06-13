@@ -26,7 +26,7 @@ public class MainController {
 		this.mainFrame = new MainFrame(this);
 		
 		nextLevel();
-		int currentLevel = game.getCurrentLevel();
+		int currentLevel = game.getCurrentPrintableLevel();
 		game.setMessage(Messages.createWelcomeMessage(currentLevel));
 		game.notifyObservers();
 	}
@@ -141,7 +141,7 @@ public class MainController {
 			int currentLevel = game.getCurrentLevel();
 			game.loadLevel(currentLevel + 1);
 			timeController.reset();
-			game.setMessage(Messages.createStartLevelMessage(game.getCurrentLevel()));
+			game.setMessage(Messages.createStartLevelMessage(game.getCurrentPrintableLevel()));
 		} else {
 			game.setMessage(Messages.createEndGameMessage(true, game.getTotalScore()));
 		}

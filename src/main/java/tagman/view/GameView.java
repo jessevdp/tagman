@@ -39,7 +39,7 @@ public class GameView extends JPanel implements Observer {
 		setLayout(new BorderLayout(0, PADDING_BETWEEN));
 		
 		this.scoreLabel = new Label(game.getTotalScore(), true);
-		this.levelLabel = new Label(getCurrentLevel(), true);
+		this.levelLabel = new Label(game.getCurrentPrintableLevel(), true);
 		
 		JPanel scoreView = createScoreView();
 		JPanel levelView = createLevelView();
@@ -85,10 +85,6 @@ public class GameView extends JPanel implements Observer {
 		
 		return levelView;
 	}
-	
-	private int getCurrentLevel() {
-		return game.getCurrentLevel() + 1;
-	}
 
 	@Override
 	public void update(Observable o, Object arg) {
@@ -99,7 +95,7 @@ public class GameView extends JPanel implements Observer {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		scoreLabel.setText(game.getTotalScore());
-		levelLabel.setText(getCurrentLevel());
+		levelLabel.setText(game.getCurrentPrintableLevel());
 	}
 
 }
