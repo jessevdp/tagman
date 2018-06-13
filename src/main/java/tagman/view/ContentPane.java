@@ -22,6 +22,8 @@ public class ContentPane extends JPanel {
 		this.gameView = new GameView(mainController);
 		this.timeView = new TimeView(mainController);
 		
+		this.setLayout(new BorderLayout());
+		
 		setBackground(BACKGROUND_COLOR);
 		
 		JPanel infoPanel = new JPanel();

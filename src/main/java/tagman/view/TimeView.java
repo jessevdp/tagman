@@ -18,7 +18,6 @@ import tagman.view.util.Label;
 public class TimeView extends JPanel implements Observer {
 	
 	private static final Color BACKGROUND_COLOR = Color.BLACK;
-	private static final Dimension PREFERRED_SIZE = new Dimension(100, 500);
 
 	private static final int PADDING_TOP = 20;
 	private static final int PADDING_BOTTOM = 10;
@@ -32,7 +31,6 @@ public class TimeView extends JPanel implements Observer {
 		this.timeController = mainController.getTimeController();
 		timeController.addObserver(this);
 		
-		setPreferredSize(PREFERRED_SIZE);
 		setBackground(BACKGROUND_COLOR);
 		setBorder(BorderFactory.createEmptyBorder(PADDING_TOP, 0, PADDING_BOTTOM, 0));
 		this.setLayout(new BorderLayout(0, PADDING_BETWEEN));
