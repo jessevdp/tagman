@@ -38,6 +38,11 @@ public class InputController {
 	public void handleKeyPress(KeyEvent e) {
 
 		switch (e.getKeyCode()) {
+		case KeyEvent.VK_ESCAPE:
+			System.exit(0);
+			break;
+
+		// MOVEMENT KEYS:
 		case KeyEvent.VK_UP:
 			input.setArrowNorth(true);
 			break;
@@ -71,10 +76,6 @@ public class InputController {
 	public void handleKeyRelease(KeyEvent e) {
 		
 		switch (e.getKeyCode()) {
-		case KeyEvent.VK_ESCAPE:
-			System.exit(0);
-			break;
-
 		// MOVEMENT KEYS:
 		case KeyEvent.VK_UP:
 			input.setArrowNorth(false);
