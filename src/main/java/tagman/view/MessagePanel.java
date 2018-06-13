@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import tagman.model.Game;
+
 @SuppressWarnings("serial")
 public class MessagePanel extends JPanel {
 	
@@ -18,12 +20,20 @@ public class MessagePanel extends JPanel {
 	private static final int MESSAGE_SIZE = 30;
 	
 	private ArrayList<JLabel> lines;
+	String currentText;
+	Game game;
 
-	public MessagePanel() {
+	public MessagePanel(Game game) {
 		this.lines = new ArrayList<>();
+		this.game = game;
 		
 		setOpaque(false);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	}
+	
+	public void update() {
+		setText(game.getMessage());
+		revalidate();
 	}
 	
 	private JLabel createLine(String text) {
@@ -41,11 +51,15 @@ public class MessagePanel extends JPanel {
 		return line;
 	}
 	
-	public void setText(String text) {
+	private void setText(String text) {
 		this.lines.clear();
 		
-		if (text.length() <= 0) {
+		if (text == null) {
 			resetComponents();
+			return;
+		}
+		
+		if (text.equals(currentText)) {
 			return;
 		}
 		
@@ -68,7 +82,6 @@ public class MessagePanel extends JPanel {
 		for (JLabel line : lines) {
 			this.add(line);
 		}
-		validate();
 	}
 
 }

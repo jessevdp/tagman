@@ -28,9 +28,6 @@ public class PlayView extends JPanel implements Observer {
 	public PlayView(MainController mainController) {
 		this.game = mainController.getGame();
 		game.addObserver(this);
-		
-		this.messagePanel = new MessagePanel();
-		messagePanel.setText(game.getMessage());
 
 		setPreferredSize(Game.WORLD_SIZE);
 		setBackground(BACKGROUND_COLOR);
@@ -39,10 +36,12 @@ public class PlayView extends JPanel implements Observer {
 		setLayout(layout);
 		
 		add(messagePanel);
+		this.messagePanel = new MessagePanel(game);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
+		messagePanel.update();
 		repaint();
 	}
 	
@@ -52,8 +51,6 @@ public class PlayView extends JPanel implements Observer {
 		paintWalls(g);
 		paintDashes(g);
 		TagManPainterPlain.paint(g, game.getTagMan());
-		messagePanel.setText(game.getMessage());
-		add(messagePanel);
 	}
 	
 	private void paintWalls(Graphics g) {
