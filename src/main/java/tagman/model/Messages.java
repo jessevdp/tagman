@@ -3,37 +3,57 @@ package tagman.model;
 public class Messages {
 	
 	private static final String NEW_LINE = "\n";
-	private static final String EMPTY_LINE = " \n";
+	private static final String EMPTY_LINE = " ";
 	
 	public static String createWelcomeMessage(int level) {
-		return "Welome to TagMan" + NEW_LINE
-				+ "Move with Arrows or Numpad" + NEW_LINE
-				+ EMPTY_LINE
-				+ createStartLevelMessage(level);
+		String[] message = {
+				"Welome to TagMan!",
+				"Move with Arrows or Numpad",
+				EMPTY_LINE
+		};
+		return assembleMessage(message) + createStartLevelMessage(level);
 	}
 	
 	public static String createStartLevelMessage(int level) {
-		return "LEVEL " + level + NEW_LINE
-				+ EMPTY_LINE
-				+ "Press S to Start!";
+		String[] message = {
+				"LEVEL " + level,
+				EMPTY_LINE,
+				"Press S to Start"
+		};
+		return assembleMessage(message);
 	}
 	
 	public static String createEndLevelMessage(int levelScore) {
-		return "TagMan Finished!\n"
-				+ "Score: " + levelScore + NEW_LINE
-				+ EMPTY_LINE
-				+ "Press L to continue!";
+		String[] message = {
+				"TagMan Finished!",
+				"Level Score: " + levelScore,
+				EMPTY_LINE,
+				"Press L to Continue"
+		};
+		return assembleMessage(message);
 	}
 	
 	public static String createEndGameMessage(boolean won, int totalScore) {
-		String prefix = won ? "Nice! TagMan has Reached the End!" : "Oeps! TagMan was Hit...";
-		
-		return prefix + NEW_LINE
-				+ EMPTY_LINE
-				+ "GAME OVER" + NEW_LINE
-				+ "Total Score: " + totalScore + NEW_LINE
-				+ EMPTY_LINE
-				+ "Press ESC to Exit.";
+		String reason = won ? "All Levels Complete!" : "TagMan was Hit...";
+
+		String[] message = {
+				"GAME OVER",
+				reason,
+				EMPTY_LINE,
+				"Total Score: " + totalScore,
+				EMPTY_LINE,
+				"Press ESC to Exit"
+		};
+
+		return assembleMessage(message);
+	}
+	
+	private static String assembleMessage(String[] parts) {
+		String message = "";
+		for (String part : parts) {
+			message += part + NEW_LINE;
+		}
+		return message;
 	}
 
 }
