@@ -48,7 +48,6 @@ public class MainController {
 				try {
 					Thread.sleep(milisecondsToSleep);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
 				}
 			}
 		};
