@@ -62,6 +62,8 @@ public class Game extends Observable {
 	
 	private boolean isRunning;
 	private int currentFrame;
+	
+	private String message;
 
 	public Game() {
 		this.tagMan = new TagMan(5, 325);
@@ -69,6 +71,7 @@ public class Game extends Observable {
 		this.dashes = new ArrayList<>();
 		this.score = new ArrayList<>();
 		this.currentLevel = -1;
+		this.message = "TEST\nCan you Read this?\n \nHELP";
 	}
 	
 	public void moveDashes() {
@@ -180,7 +183,20 @@ public class Game extends Observable {
 		if (currentLevel < 0) return;
 		score.add(amount);
 		this.setChanged();
-	} 
+	}
+	
+	/**
+	 * Getter for Game.message
+	 * @return the message (empty String if null).
+	 */
+	public String getMessage() {
+		String message = (this.message == null) ? "" : this.message;
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
 	
 	/*
 	 * This method needs to be made public in order for it
