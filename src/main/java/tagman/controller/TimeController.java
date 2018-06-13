@@ -12,19 +12,23 @@ public class TimeController extends Observable implements Runnable {
 	
 	private int currentValue;
 	private boolean playing;
+	
+	private Thread thread;
 
 	public TimeController() {
 		this.playing = false;
+		this.thread = new Thread(this);
 		reset();
 	}
 	
 	public void start() {
 		playing = true;
-		new Thread(this).start();
+		thread.start();
 	}
 	
 	public void stop() {
 		playing = false;
+		thread.interrupt();
 	}
 	
 	public void reset() {
@@ -36,10 +40,10 @@ public class TimeController extends Observable implements Runnable {
 		while (playing) {
 			try {
 				Thread.sleep(STEP_TIME);
+				executeStep();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				// TIMER WAS STOPPED
 			}
-			executeStep();
 		}
 	}
 	
