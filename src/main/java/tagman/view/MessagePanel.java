@@ -3,15 +3,16 @@ package tagman.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
-public class MessagePanel extends JLayeredPane {
+public class MessagePanel extends JPanel {
 	
 	private static final Color MESSAGE_COLOR = Color.YELLOW;
 	private static final int MESSAGE_SIZE = 30;
