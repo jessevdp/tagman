@@ -30,25 +30,34 @@ public class TimeBar extends JPanel {
 		
 		int width = this.getWidth();
 		int height = this.getHeight();
+		
+		int initialBarHeight = calculateInitialBarHeight(height);
+		int offset = height - initialBarHeight;
 
 		int barHeight = calculateBarHeight(height);
 		int barWidth = width / 2;
 		int x = barWidth / 2;
-		int y = height - barHeight;
+		int y = (initialBarHeight - barHeight) + offset;
 		
 		g.setColor(BACKGROUND_COLOR);
-		g.fillRect(x, 0, barWidth, height);
+		g.fillRect(x, offset, barWidth, initialBarHeight);
 		
 		Color barColor = calculateBarColor();
 		g.setColor(barColor);
 		g.fillRect(x, y, barWidth, barHeight);
 	}
 	
-	private int calculateBarHeight(int height) {		
+	private int calculateInitialBarHeight(int height) {
+		int amountOfSteps = calculateAmountOfSteps();
+		int heightPerStep = height / amountOfSteps;
+		return amountOfSteps * heightPerStep;
+	}
+	
+	private int calculateBarHeight(int height) {	
 		int amountOfSteps = calculateAmountOfSteps();
 		int heightPerStep = height / amountOfSteps;
 		int amountOfStepsLeft = calculateAmountOfStepsLeft();
-		
+
 		int barHeight = amountOfStepsLeft * heightPerStep;
 		if (barHeight <= 0) barHeight = HEIGHT_WHEN_EMPTY;
 		
