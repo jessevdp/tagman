@@ -42,6 +42,12 @@ public class MessagePanel extends JLayeredPane {
 	
 	public void setText(String text) {
 		this.lines.clear();
+		
+		if (text.length() <= 0) {
+			resetComponents();
+			return;
+		}
+		
 		String[] lines = splitMessage(text);
 		for (String string : lines) {
 			JLabel line = createLine(string);
