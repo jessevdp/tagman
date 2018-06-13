@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import tagman.model.Dash;
 import tagman.model.Direction;
 import tagman.model.Game;
+import tagman.model.Messages;
 import tagman.model.TagMan;
 import tagman.model.Wall;
 import tagman.view.MainFrame;
@@ -25,6 +26,9 @@ public class MainController {
 		this.mainFrame = new MainFrame(this);
 		
 		nextLevel();
+		int currentLevel = game.getCurrentLevel();
+		game.setMessage(Messages.createWelcomeMessage(currentLevel));
+		game.notifyObservers();
 	}
 	
 	private void startGameThread() {
@@ -114,14 +118,15 @@ public class MainController {
 		if (game.getTagMan().hasFinished()) {
 			int score = timeController.getCurrentValue();
 			game.addScore(score);
-			// TODO show end game screen
+			game.setMessage(Messages.createEndLevelMessage(score));
 		} else {
-			// TODO show GAME OVER screen
+			game.setMessage(Messages.createEndGameMessage(false, game.getTotalScore()));
 		}
 		game.notifyObservers();
 	}
 	
 	public void startLevel() {
+		game.resetMessage();
 		game.start();
 		timeController.reset();
 		timeController.start();
@@ -133,9 +138,10 @@ public class MainController {
 		if (game.hasNextLevel()) {
 			int currentLevel = game.getCurrentLevel();
 			game.loadLevel(currentLevel + 1);
+			game.setMessage(Messages.createStartLevelMessage(game.getCurrentLevel()));
 			game.notifyObservers();
 		} else {
-			// TODO: show end game screen
+			game.setMessage(Messages.createEndGameMessage(true, game.getTotalScore()));
 		}
 	}
 
