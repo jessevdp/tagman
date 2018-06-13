@@ -34,9 +34,9 @@ public class PlayView extends JPanel implements Observer {
 		
 		OverlayLayout layout = new OverlayLayout(this);
 		setLayout(layout);
-		
-		add(messagePanel);
+
 		this.messagePanel = new MessagePanel(game);
+		add(messagePanel);
 	}
 
 	@Override
