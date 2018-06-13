@@ -47,9 +47,14 @@ public class MainFrame extends JFrame implements KeyListener {
 		inputController.handleKeyRelease(e);
 	}
 	
+	/*
+	 * We need to override this method when implementing
+	 * the KeyListener interface. The override does
+	 * absolutely nothing.
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
-		inputController.handleKeyType(e);
+		
 	}
 
 }

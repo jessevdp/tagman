@@ -115,9 +115,5 @@ public class InputController {
 		}
 		
 	}
-	
-	public void handleKeyType(KeyEvent e) {
-
-	}
 
 }
