@@ -61,6 +61,7 @@ public class MessagePanel extends JLayeredPane {
 		for (JLabel line : lines) {
 			this.add(line);
 		}
+		validate();
 	}
 
 }

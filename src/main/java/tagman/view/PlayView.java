@@ -52,6 +52,8 @@ public class PlayView extends JPanel implements Observer {
 		paintWalls(g);
 		paintDashes(g);
 		TagManPainterPlain.paint(g, game.getTagMan());
+		messagePanel.setText(game.getMessage());
+		add(messagePanel);
 	}
 	
 	private void paintWalls(Graphics g) {

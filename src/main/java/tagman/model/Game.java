@@ -71,7 +71,6 @@ public class Game extends Observable {
 		this.dashes = new ArrayList<>();
 		this.score = new ArrayList<>();
 		this.currentLevel = -1;
-		this.message = "TEST\nCan you Read this?\n \nHELP";
 	}
 	
 	public void moveDashes() {
@@ -196,6 +195,11 @@ public class Game extends Observable {
 	
 	public void setMessage(String message) {
 		this.message = message;
+		setChanged();
+	}
+	
+	public void resetMessage() {
+		this.message = null;
 	}
 	
 	/*
