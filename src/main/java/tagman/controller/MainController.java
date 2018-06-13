@@ -20,12 +20,11 @@ public class MainController {
 
 	public MainController() {
 		this.timeController = new TimeController();
-		this.inputController = new InputController();
+		this.inputController = new InputController(this);
 		this.game = new Game();
 		this.mainFrame = new MainFrame(this);
 		
 		nextLevel();
-		startLevel();
 	}
 	
 	private void startGameThread() {
@@ -122,14 +121,14 @@ public class MainController {
 		game.notifyObservers();
 	}
 	
-	private void startLevel() {
+	public void startLevel() {
 		game.start();
 		timeController.reset();
 		timeController.start();
 		startGameThread();
 	}
 	
-	private void nextLevel() {
+	public void nextLevel() {
 		if (!game.canEndCurrentLevel()) return;
 		if (game.hasNextLevel()) {
 			int currentLevel = game.getCurrentLevel();

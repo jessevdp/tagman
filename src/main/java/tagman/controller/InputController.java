@@ -7,9 +7,11 @@ import tagman.model.Input;
 
 public class InputController {
 	
+	private MainController mainController;
 	private Input input;
 
-	public InputController() {
+	public InputController(MainController mainController) {
+		this.mainController = mainController;
 		this.input = new Input();
 	}
 	
@@ -40,6 +42,12 @@ public class InputController {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_ESCAPE:
 			System.exit(0);
+			break;
+		case KeyEvent.VK_S:
+			mainController.startLevel();
+			break;
+		case KeyEvent.VK_L:
+			mainController.nextLevel();
 			break;
 
 		// MOVEMENT KEYS:
