@@ -165,7 +165,7 @@ public class Game extends Observable {
 	
 	public boolean canEndCurrentLevel() {
 		if (currentLevel < 0) return true;
-		boolean hasScore = (currentLevel - 1) <= score.size();
+		boolean hasScore = currentLevelHasScore();
 		if (isRunning || !hasScore) return false;
 		return true;
 	}
@@ -182,6 +182,10 @@ public class Game extends Observable {
 		if (currentLevel < 0) return;
 		score.add(amount);
 		this.setChanged();
+	}
+	
+	public boolean currentLevelHasScore() {
+		return (currentLevel + 1) <= score.size();
 	}
 	
 	/**

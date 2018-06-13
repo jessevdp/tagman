@@ -126,6 +126,8 @@ public class MainController {
 	}
 	
 	public void startLevel() {
+		if (game.isRunning() || game.currentLevelHasScore()) return;
+		
 		game.resetMessage();
 		game.start();
 		timeController.reset();
