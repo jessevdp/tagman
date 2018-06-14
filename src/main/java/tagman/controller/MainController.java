@@ -13,15 +13,17 @@ import tagman.view.MainFrame;
 
 public class MainController {
 
-  MainFrame mainFrame;
-  TimeController timeController;
-  InputController inputController;
+  private MainFrame mainFrame;
+  private TimeController timeController;
+  private InputController inputController;
+  private SoundController soundController;
 
   Game game;
 
   public MainController () {
     this.timeController = new TimeController();
     this.inputController = new InputController(this);
+    this.soundController = new SoundController();
     this.game = new Game();
     this.mainFrame = new MainFrame(this);
 
@@ -63,12 +65,14 @@ public class MainController {
     if (isHit) {
       game.getTagMan().setHit();
       endLevel();
+      soundController.playHit();
     }
 
     boolean hasFinished = checkFinished();
     if (hasFinished) {
       game.getTagMan().setFinished();
       endLevel();
+      soundController.playFinish();
     }
 
     game.increaseFrame();
