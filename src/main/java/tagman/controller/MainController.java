@@ -13,6 +13,7 @@ import tagman.view.MainFrame;
 
 public class MainController {
 
+  @SuppressWarnings("unused")
   private MainFrame mainFrame;
   private TimeController timeController;
   private InputController inputController;
