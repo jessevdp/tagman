@@ -21,13 +21,18 @@ public class PlayView extends JPanel implements Observer {
   private static final Color BACKGROUND_COLOR = Color.DARK_GRAY;
   private static final Color WALL_COLOR = Color.DARK_GRAY.darker().darker();
   private static final Color DASH_COLOR = Color.RED;
+  
+  private static final boolean ANIMATE_TAGMAN = true;
 
   Game game;
   MessagePanel messagePanel;
+  TagManPainter tagManPainter;
 
   public PlayView (MainController mainController) {
     this.game = mainController.getGame();
     game.addObserver(this);
+    
+    this.tagManPainter = ANIMATE_TAGMAN ? new TagManPainterAnimated(game.getTagMan()) : new TagManPainterPlain();
 
     setPreferredSize(Game.WORLD_SIZE);
     setBackground(BACKGROUND_COLOR);
@@ -50,7 +55,7 @@ public class PlayView extends JPanel implements Observer {
     super.paintComponent(g);
     paintWalls(g);
     paintDashes(g);
-    TagManPainterPlain.paint(g, game.getTagMan());
+    tagManPainter.paint(g, game.getTagMan());
   }
 
   private void paintWalls (Graphics g) {

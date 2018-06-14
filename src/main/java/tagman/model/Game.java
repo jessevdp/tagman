@@ -130,6 +130,10 @@ public class Game extends Observable {
     int milisecondsSinceStart = (int) Math.floor(currentFrame / framesPerMilisecond);
     return milisecondsSinceStart;
   }
+  
+  public int getCurrentFrame () {
+    return this.currentFrame;
+  }
 
   public void increaseFrame () {
     this.currentFrame++;

@@ -6,9 +6,10 @@ import java.awt.Rectangle;
 
 import tagman.model.TagMan;
 
-public class TagManPainterPlain {
+public class TagManPainterPlain implements TagManPainter {
 
-  protected static void paint (Graphics g, TagMan tagMan) {
+  @Override
+  public void paint (Graphics g, TagMan tagMan) {
     boolean won = tagMan.hasFinished();
     Rectangle hitbox = tagMan.getHitbox();
 
@@ -21,7 +22,7 @@ public class TagManPainterPlain {
     drawPart(g, hitbox, innerColor, 24);
   }
 
-  private static void drawPart (Graphics g, Rectangle hitbox, Color color, int smaller) {
+  private void drawPart (Graphics g, Rectangle hitbox, Color color, int smaller) {
     int offset = smaller / 2;
     int x = hitbox.x + offset;
     int y = hitbox.y + offset;
@@ -32,7 +33,7 @@ public class TagManPainterPlain {
     g.fillOval(x, y, width, height);
   }
 
-  private static void drawPart (Graphics g, Rectangle hitbox, Color color) {
+  private void drawPart (Graphics g, Rectangle hitbox, Color color) {
     drawPart(g, hitbox, color, 0);
   }
 
