@@ -61,6 +61,7 @@ public class MainController {
 
     boolean isHit = checkDashCollision();
     if (isHit) {
+      game.getTagMan().setHit();
       endLevel();
     }
 
