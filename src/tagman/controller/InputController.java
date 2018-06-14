@@ -16,8 +16,18 @@ public class InputController {
   }
 
   public Direction getDirection () {
+    
+    boolean pressedOpposite = (
+          (input.pressedArrowNorth() && input.pressedArrowSouth())
+          || (input.pressedNumpadNorth() && input.pressedNumpadSouth())
+          || (input.pressedNumpadNorthEast() && input.pressedNumpadSouthEast())
+        );
+    
+    if (pressedOpposite) {
+      return Direction.NONE;
+    }
 
-    if ( (input.pressedArrowNorth() && input.pressedArrowEast()) || input.pressedNumpadNorthEast()) {
+    if ((input.pressedArrowNorth() && input.pressedArrowEast()) || input.pressedNumpadNorthEast()) {
       return Direction.NORTH_EAST;
     } else if ( (input.pressedArrowSouth() && input.pressedArrowEast()) || input.pressedNumpadSouthEast()) {
       return Direction.SOUTH_EAST;
