@@ -3,8 +3,8 @@ package tagman.view;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ import tagman.model.TagMan;
 
 public class TagManPainterAnimated implements TagManPainter {
 
-  private static final String PATH_TO_PICTURES = "src/main/resources/player_pictures/";
+  private static final String PATH_TO_PICTURES = "/resources/player_pictures/";
 
   private BufferedImage finished;
   private BufferedImage hit;
@@ -76,7 +76,8 @@ public class TagManPainterAnimated implements TagManPainter {
     BufferedImage image = null;
 
     try {
-      image = ImageIO.read(new File(path));
+      URL file = getClass().getResource(path);
+      image = ImageIO.read(file);
     } catch (IOException e) {
       e.printStackTrace(); // TODO
     }
