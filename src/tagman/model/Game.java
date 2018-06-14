@@ -54,7 +54,60 @@ public class Game extends Observable {
         new Dash(850, 2, 1500),
         new Dash(950, 3, 2500),
         new Dash(1050, 2, 4000)
-      ))
+      )),
+      // LEVEL 3
+      new ArrayList<GameObject>(Arrays.asList(
+        new Wall(0, 0, 60, 365),
+        new Wall(0, 435, 60, 365),
+        new Wall(1140, 0, 60, 365),
+        new Wall(1140, 435, 60, 365),
+        
+        new Wall(300, 0, 40, 200),
+        new Wall(300, 300, 40, 500),
+        
+        new Wall(900, 0, 40 , 500),
+        new Wall(900, 600, 40, 200),
+
+        new TagMan(5, 375),
+
+        new Dash(150, 4, 0),
+        new Dash(250, 3, 1500),
+        new Dash(350, 2, 1500),
+        new Dash(450, 2, 2500),
+        new Dash(550, 1, 1000),
+        new Dash(650, 1, 2000),
+        new Dash(750, 2, 3500),
+        new Dash(850, 2, 4000),
+        new Dash(950, 3, 6000),
+        new Dash(1050, 2, 6500)
+      )),
+      // LEVEL 4
+      new ArrayList<GameObject>(Arrays.asList(
+          new Wall(0, 0, 60, 365),
+          new Wall(0, 435, 60, 365),
+          new Wall(1140, 0, 60, 365),
+          new Wall(1140, 435, 60, 365),
+          
+          new Wall(300, 0, 40, 200),
+          new Wall(300, 300, 40, 500),
+          new Wall(660, 475, 30, 150),
+          new Wall(800, 0, 40 , 500),
+          new Wall(800, 600, 40, 200),
+          new Wall(1000, 400, 30, 150),
+
+          new TagMan(5, 375),
+
+          new Dash(150, 4, 0),
+          new Dash(250, 3, 1500),
+          new Dash(350, 2, 1500),
+          new Dash(450, 3, 3500),
+          new Dash(550, 2, 2000),
+          new Dash(650, 2, 3000),
+          new Dash(750, 2, 4500),
+          new Dash(850, 2, 5000),
+          new Dash(950, 3, 6000),
+          new Dash(1050, 4, 7500)
+        ))
   ));
 
   private ArrayList<Dash> dashes;
