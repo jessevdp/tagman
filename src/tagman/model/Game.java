@@ -191,6 +191,10 @@ public class Game extends Observable {
   public void increaseFrame () {
     this.currentFrame++;
   }
+  
+  public void resetFrames () {
+    this.currentFrame = 0;
+  }
 
   public void start () {
     this.isRunning = true;

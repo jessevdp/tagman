@@ -147,6 +147,7 @@ public class MainController {
     if (game.hasNextLevel()) {
       int currentLevel = game.getCurrentLevel();
       game.loadLevel(currentLevel + 1);
+      game.resetFrames();
       timeController.reset();
       game.setMessage(Messages.createStartLevelMessage(game.getCurrentPrintableLevel()));
     } else {
