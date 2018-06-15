@@ -24,11 +24,11 @@ public abstract class GameObject {
     return this.hitbox;
   }
 
-  public void setPosition (Point position) {
+  protected void setPosition (Point position) {
     this.hitbox.setLocation(position);
   }
 
-  public void setPosition (int x, int y) {
+  protected void setPosition (int x, int y) {
     this.hitbox.setLocation(x, y);
   }
 
